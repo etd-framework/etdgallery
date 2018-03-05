@@ -1,0 +1,17 @@
+/* CONFIG */
+
+.size {
+    margin-bottom: 2px;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+}
+
+.inner {
+    padding: 9px 15px;
+}
+
+.sizes label {
+    display: inline-block !important;
+    float: none !important;
+    margin: 0 !important;
+}

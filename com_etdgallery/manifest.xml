@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.8" method="upgrade">
+    <name>com_etdgallery</name>
+    <author>ETD Solutions</author>
+    <creationDate>Juin 2015</creationDate>
+    <copyright>Copyright (C) 2015 - 2018 ETD Solutions. All rights reserved.</copyright>
+    <license>Internal use only</license>
+    <authorEmail>support@etd-solutions.com</authorEmail>
+    <authorUrl>etd-solutions.com</authorUrl>
+    <version>1.1.0</version>
+    <description>COM_ETDGALLERY_XML_DESCRIPTION</description>
+
+    <!-- Runs on install -->
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+
+    <!-- Runs on uninstall -->
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <!-- Media files -->
+    <media destination="com_etdgallery" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+        <folder>vendor</folder>
+    </media>
+
+    <files folder="site">
+        <filename>etdgallery.php</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>models</folder>
+        <folder>views</folder>
+    </files>
+
+    <languages folder="site">
+        <language tag="fr-FR">language/fr-FR/fr-FR.com_etdgallery.ini</language>
+    </languages>
+
+    <administration>
+
+        <menu view="images" link="option=com_etdgallery&amp;view=images">com_etdgallery</menu>
+
+        <submenu>
+            <menu link="option=com_etdgallery&amp;view=images"
+                  view="images"
+                  alt="EtdGallery/Images">
+                com_etdgallery_images
+            </menu>
+            <menu link="option=com_categories&amp;extension=com_etdgallery"
+                  view="categories"
+                  alt="EtdGallery/Categories">
+                com_etdgallery_categories
+            </menu>
+        </submenu>
+
+        <files folder="admin">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>etdgallery.php</filename>
+            <filename>controller.php</filename>
+            <folder>controllers</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+        </files>
+
+        <languages folder="admin">
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_etdgallery.ini</language>
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_etdgallery.sys.ini</language>
+        </languages>
+    </administration>
+
+    <!-- Installation / uninstallation script file -->
+    <scriptfile>com_etdgallery.script.php</scriptfile>
+</extension>

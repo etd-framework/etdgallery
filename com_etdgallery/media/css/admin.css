@@ -1,0 +1,66 @@
+.fileupload-buttonbar {
+    margin-bottom: 5px;
+}
+
+.progress-extended {
+    margin-bottom: 10px;
+}
+
+#fileupload .select input {
+    margin-top: -4px;
+}
+
+.thumbnails {
+    margin-left: -15px !important;
+}
+
+.thumbnails > li {
+    margin-left: 0 !important;
+}
+
+.thumbnail {
+    cursor: move;
+    background: #fff;
+    margin-left: 15px;
+}
+
+.thumbnail .preview {
+    margin: 0 auto 10px;
+}
+
+.thumbnail canvas {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: 0px none;
+}
+
+.thumbnail .form-group {
+    margin: 10px 0;
+}
+
+.thumbnail .actions {
+    text-align: center;
+}
+
+.thumbnail .featured {
+    overflow: hidden;
+}
+
+.thumbnail .featured:active .icon-star-empty {
+    display: none;
+}
+
+.thumbnail .featured:active .icon-star {
+    display: inline-block;
+}
+
+.thumbnail .featured input {
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+}
+
+.ui-sortable-placeholder {
+    position: relative;
+}
