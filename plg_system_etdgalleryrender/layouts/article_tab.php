@@ -61,41 +61,41 @@ $doc->addScriptDeclaration("jQuery(function ($) {
 });");
 
 ?>
-<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'etdgallery', JText::_('PLG_SYSTEM_ETDGALLERY_TAB_TITLE', true)); ?>
+<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'etdgallery', JText::_('PLG_SYSTEM_ETDGALLERYRENDER_TAB_TITLE', true)); ?>
 <div id="fileupload">
     <?php /*<div class="row-fluid">
         <div class="span6">*/?>
             <fieldset>
-                <legend><?php echo JText::_('PLG_SYSTEM_ETDGALLERY_FIELDSET_UPLOAD_IMAGES_LABEL') ?></legend>
+                <legend><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_FIELDSET_UPLOAD_IMAGES_LABEL') ?></legend>
 
                     <div class="fileupload-buttonbar clearfix">
                         <div class="btn-toolbar">
                             <div class="btn-group">
                                 <span class="btn btn-success fileinput-button">
                                     <i class="icon-plus"></i>
-                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERY_UPLOAD_ADD_FILES') ?></span>
+                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_ADD_FILES') ?></span>
                                     <input type="file" name="image" multiple>
                                 </span>
                             </div>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary start">
                                     <i class="icon-upload"></i>
-                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERY_UPLOAD_START') ?></span>
+                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_START') ?></span>
                                 </button>
                                 <button type="button" class="btn btn-warning cancel">
                                     <i class="icon-minus-circle"></i>
-                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERY_UPLOAD_CANCEL') ?></span>
+                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_CANCEL') ?></span>
                                 </button>
                             </div>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default select">
                                     <input type="checkbox">
-                                    <span class="on"><?php echo JText::_('PLG_SYSTEM_ETDGALLERY_UPLOAD_SELECT_ALL') ?></span>
-                                    <span class="off hide"><?php echo JText::_('PLG_SYSTEM_ETDGALLERY_UPLOAD_SELECT_NONE') ?></span>
+                                    <span class="on"><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_SELECT_ALL') ?></span>
+                                    <span class="off hide"><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_SELECT_NONE') ?></span>
                                 </button>
                                 <button type="button" class="btn btn-danger delete" disabled>
                                     <i class="icon-trash"></i>
-                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERY_UPLOAD_DELETE') ?></span>
+                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_DELETE') ?></span>
                                 </button>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ $doc->addScriptDeclaration("jQuery(function ($) {
        <?php /* </div>
         <div class="span6">
             <fieldset>
-                <legend><?php echo JText::_('PLG_SYSTEM_ETDGALLERY_FIELDSET_ADD_VIDEO_LABEL') ?></legend>
+                <legend><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_FIELDSET_ADD_VIDEO_LABEL') ?></legend>
 
             </fieldset>
         </div>
@@ -141,7 +141,7 @@ $doc->addScriptDeclaration("jQuery(function ($) {
                 <div class="radio">
                   <label>
                     <input type="radio" name="featured" value="1">
-                    <?php echo JText::_('PLG_SYSTEM_ETDGALLERY_UPLOAD_FEATURED') ?>
+                    <?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_FEATURED') ?>
                   </label>
                 </div>
             </div>
