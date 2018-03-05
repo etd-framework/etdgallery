@@ -14,8 +14,8 @@
     <!-- Installation script -->
     <scriptfile>etdgallery.install.php</scriptfile>
 
-    <languages folder="language">
-        <language tag="fr-FR">fr-FR/fr-FR.pkg_etdgallery.sys.ini</language>
+    <languages>
+        <language tag="fr-FR">language/fr-FR/fr-FR.pkg_etdgallery.sys.ini</language>
     </languages>
 
     <files>
