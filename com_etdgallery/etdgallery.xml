@@ -82,5 +82,5 @@
     </administration>
 
     <!-- Installation / uninstallation script file -->
-    <scriptfile>com_etdgallery.script.php</scriptfile>
+    <scriptfile>script.etdgallery.php</scriptfile>
 </extension>
