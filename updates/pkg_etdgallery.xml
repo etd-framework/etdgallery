@@ -15,6 +15,7 @@
         <maintainer>ETD Solutions</maintainer>
         <maintainerurl>https://etd-solutions.com/</maintainerurl>
         <targetplatform name="joomla" version="3.6" />
-        <client_id>1</client_id>
+        <client_id>0</client_id>
+        <folder/>
     </update>
 </updates>
