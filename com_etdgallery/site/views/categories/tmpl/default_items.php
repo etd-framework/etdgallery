@@ -1,11 +1,13 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  com_content
+ * @subpackage  com_etdgallery
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
+ * @version     1.1.1
+ * @copyright   Copyright (C) 2013 - 2018 ETD Solutions. All rights reserved.
+ * @license     http://www.etd-solutions.com/licence
+ * @author      ETD Solutions http://www.etd-solutions.com
+ **/
 
 defined('_JEXEC') or die;
 

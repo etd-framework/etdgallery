@@ -2,7 +2,7 @@
 <extension type="package" version="3.8" method="upgrade">
     <name>ETDGALLERY_PACKAGE_TITLE</name>
     <packagename>etdgallery</packagename>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <creationDate>March 2018</creationDate>
     <author>ETD Solutions</author>
     <copyright>Copyright (C) 2015 - 2018 ETD Solutions. All rights reserved.</copyright>
@@ -27,6 +27,6 @@
 
     <!-- Update servers -->
     <updateservers>
-        <server type="extension" priority="1" name="ETD Gallery Updates">https://github.com/etd-framework/etdgallery/updates/pkg_etdgallery.xml</server>
+        <server type="extension" priority="1" name="ETD Gallery Updates">https://raw.githubusercontent.com/etd-framework/etdgallery/master/updates/pkg_etdgallery.xml</server>
     </updateservers>
 </extension>

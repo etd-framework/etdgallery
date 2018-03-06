@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_etdgallery
  *
- * @version		1.1.0
+ * @version		1.1.1
  * @copyright	Copyright (C) 2013 - 2018 ETD Solutions. All rights reserved.
  * @license		http://www.etd-solutions.com/licence
  * @author		ETD Solutions http://www.etd-solutions.com
