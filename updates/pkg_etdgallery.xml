@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <updates>
     <update>
         <name>ETD Gallery</name>
@@ -10,10 +9,12 @@
         <downloads>
             <downloadurl type="full" format="zip">https://github.com/etd-framework/etdgallery/archive/1.1.1.zip</downloadurl>
         </downloads>
-        <tags><tag>stable</tag></tags>
+        <tags>
+            <tag>stable</tag>
+        </tags>
         <maintainer>ETD Solutions</maintainer>
         <maintainerurl>https://etd-solutions.com/</maintainerurl>
-        <targetplatform name="joomla" version="3.8" />
+        <targetplatform name="joomla" version="3.6" />
         <client_id>1</client_id>
     </update>
 </updates>
