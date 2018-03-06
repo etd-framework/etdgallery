@@ -29,6 +29,7 @@ class EtdGalleryModelImages extends JModelList {
                 'id', 'a.id',
                 'type', 'a.type',
                 'filename', 'a.filename',
+                'dirname', 'a.dirname',
                 'title', 'a.title',
                 'state', 'a.state',
                 'featured', 'a.featured',
@@ -57,7 +58,7 @@ class EtdGalleryModelImages extends JModelList {
 
         // Select the required fields from the table.
         $query->select(
-            $this->getState('list.select', 'a.id AS id, a.type as type, a.catid AS catid, a.title AS title, a.filename as filename, a.article_id AS article_id, a.state AS state,
+            $this->getState('list.select', 'a.id AS id, a.type as type, a.catid AS catid, a.title AS title, a.filename as filename, a.dirname as dirname, a.article_id AS article_id, a.state AS state,
             a.ordering AS ordering, a.created AS created, a.publish_up as publish_up, a.publish_down as publish_down, b.title AS article_title, d.alias as cat_alias'));
         $query->from($db->quoteName('#__etdgallery') . ' AS a');
 

@@ -332,6 +332,59 @@ class EtdGalleryModelImage extends JModelAdmin {
                 $data["filename"] = $image['name'];
             }
 
+            // On récupère les dossiers de destination.
+            $config    = JComponentHelper::getParams('com_etdgallery');
+            $imagesDir = JPATH_ROOT . "/images/" . $config->get('images_dir', 'etdgallery');
+            $dirname   = "images/" . $config->get('images_dir', 'etdgallery');
+
+            // Si l'image appartient à une catégorie.
+            if ($data["catid"] > 0) {
+
+                // On récupère l'alias de la catégorie.
+                $category  = $this->getCategory($data["catid"]);
+                $cat_alias = $category->alias;
+
+                if ($cat_alias) {
+
+                    $imagesDir .= '/' . $cat_alias;
+                    $dirname .= '/' . $cat_alias;
+
+                    // On crée le dossier de destination.
+                    if (!is_dir($imagesDir)) {
+                        JFolder::create($imagesDir);
+                    }
+                }
+            }
+
+            $data['dirname'] = $dirname;
+
+            // Si l'image existe déjà et a donc déjà été uploadée.
+            // Et si la catégorie a changée.
+            // Il faut donc changer les images de dossier.
+            if ($data['id']) {
+
+                $item  = $this->getItem($data["id"]);
+                $sizes = json_decode($config->get('sizes', '[]'));
+
+                if ($item->catid != $data['catid']) {
+
+                    // On renome le fichier original pour faire apparaitre l'id de l'image.
+                    $old_path      = JPATH_ROOT . "/" . $item->dirname . "/" . $item->id . "_" . $item->filename;
+                    $original_path = $imagesDir . "/" . $data["id"] . "_" . $item->filename;
+
+                    JFile::move($old_path, $original_path);
+
+                    foreach ($sizes as $size) {
+
+                        // On renome le fichier original pour faire apparaitre l'id de l'image.
+                        $old_path      = JPATH_ROOT . "/" . $item->dirname . "/" . $item->id . "_" . $size->name . "_" . $item->filename;
+                        $original_path = $imagesDir . "/" . $data["id"] . "_" . $size->name . "_" . $item->filename;
+
+                        JFile::move($old_path, $original_path);
+                    }
+                }
+            }
+
         } elseif ($data["type"] == "video") {
 
             // Le nom de fichier est l'url.

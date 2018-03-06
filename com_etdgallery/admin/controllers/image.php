@@ -100,8 +100,9 @@ class EtdGalleryControllerImage extends JControllerForm {
         $input     = $app->input;
         $image     = $input->files->get('image');
         $config    = JComponentHelper::getParams('com_etdgallery');
-        $imagesDir = JPATH_ROOT . "/images/" . $config->get('images_dir', 'di');
-        $imagesUri = JUri::root() . "images/" . $config->get('images_dir', 'di');
+        $dirname   = "images/" . $config->get('images_dir', 'etdgallery');
+        $imagesDir = JPATH_ROOT . "/images/" . $config->get('images_dir', 'etdgallery');
+        $imagesUri = JUri::root() . "images/" . $config->get('images_dir', 'etdgallery');
         $sizes     = json_decode($config->get('sizes', '[]'));
         $model     = $this->getModel();
 
@@ -134,13 +135,15 @@ class EtdGalleryControllerImage extends JControllerForm {
         if ($catid > 0) {
 
             // On récupère l'alias de la catégorie.
-            $cat_alias = $model->getCategory($catid)->alias;
+            $category  = $model->getCategory($catid);
+            $cat_alias = $category->alias;
 
             if ($cat_alias) {
 
                 // On update les dossiers de destination
                 $imagesDir .= '/' . $cat_alias;
                 $imagesUri .= '/' . $cat_alias;
+                $dirname   .= '/' . $cat_alias;
 
                 // On crée le dossier de destination.
                 if (!is_dir($imagesDir)) {
@@ -152,14 +155,6 @@ class EtdGalleryControllerImage extends JControllerForm {
         if (!empty($crop)) {
             $crop = json_decode($crop);
         }
-
-        // On contrôle les droits de modification.
-        /*if (!$this->allowSave(array('id' => $article_id))) {
-            $result->error   = true;
-            $result->message = JText::_('JLIB_APPLICATION_ERROR_EDIT_NOT_PERMITTED');
-            echo json_encode($result);
-            exit(403);
-        }*/
 
         if (count($image)) {
 
@@ -208,6 +203,7 @@ class EtdGalleryControllerImage extends JControllerForm {
                 'article_id'  => $article_id,
                 'state'       => 1,
                 'filename'    => $name,
+                'dirname'     => $dirname,
                 'title'       => $title,
                 'description' => $description,
                 'featured'    => $featured
@@ -247,7 +243,6 @@ class EtdGalleryControllerImage extends JControllerForm {
             } else {
 
                 $result->message = JText::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError());
-
             }
         }
 
@@ -260,9 +255,10 @@ class EtdGalleryControllerImage extends JControllerForm {
 
         // Init
         $input = JFactory::getApplication()->input;
-        $data  = $input->files->get('jform');
+        $files = $input->files->get('jform');
 
-        if (count($data)) {
+        // Si une nouvelle image est uploadée.
+        if (count($files)) {
 
             $config    = JComponentHelper::getParams('com_etdgallery');
             $imagesDir = JPATH_ROOT . "/images/" . $config->get('images_dir', 'di');
@@ -289,7 +285,7 @@ class EtdGalleryControllerImage extends JControllerForm {
                 JFolder::create($imagesDir);
             }
 
-            $image = $data['image'];
+            $image = $files['image'];
 
             // Pas d'image envoyée
             if ($image['error'] == 4) {
@@ -335,9 +331,7 @@ class EtdGalleryControllerImage extends JControllerForm {
 
                 $table->store();
             }
-
         }
-
     }
 
     protected function generateImageSizes($original_path, $image_id, $sizes, $crop = null) {

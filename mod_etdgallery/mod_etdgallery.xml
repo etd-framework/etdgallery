@@ -40,6 +40,16 @@
 				</field>
 
 				<field
+						name="catid"
+						type="categoryedit"
+						label="JCATEGORY"
+						description="JFIELD_CATEGORY_DESC"
+						required="true"
+						default="">
+					<option value="0">MOD_ETDGALLERY_FIELD_CATID_OPTION_DEFAULT</option>
+				</field>
+
+				<field
 						name="tag_id"
 						type="tag"
 						label="MOD_ETDGALLERY_FIELD_TAGS_LABEL"

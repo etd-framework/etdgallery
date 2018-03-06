@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `#__etdgallery` (
   `article_id` int(10) unsigned NOT NULL DEFAULT '0',
   `state` tinyint(1) NOT NULL DEFAULT '0',
   `filename` varchar(255) NOT NULL,
+  `dirname` varchar(255) NOT NULL DEFAULT '',
   `title` varchar(255) NOT NULL,
   `description` tinytext NOT NULL,
   `featured` tinyint(1) NOT NULL DEFAULT '0',

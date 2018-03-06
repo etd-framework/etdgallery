@@ -65,6 +65,7 @@
                readonly="true" filter="unset" />
 
         <field name="filename" type="hidden" filter="unset" />
+        <field name="dirname" type="hidden" filter="unset" />
         <field name="crop" type="hidden" />
 
     </fieldset>

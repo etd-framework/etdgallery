@@ -16,9 +16,13 @@ jimport('joomla.filesystem.file');
 
 class PlgContentEtdGallery extends JPlugin {
 
-    /*
-    * update images properties after content is saved
-    */
+    /**
+     * Update images properties after content is saved.
+     *
+     * @param $context
+     * @param $article
+     * @param $isNew
+     */
     public function onContentAfterSave($context, $article, $isNew) {
 
         if ($context == 'com_content.article') {
@@ -39,9 +43,8 @@ class PlgContentEtdGallery extends JPlugin {
             if ($app->input->get('task') == 'save2copy') {
 
                 // Config du composant
-                $config    = JComponentHelper::getParams('com_etdgallery');
-                $sizes     = json_decode($config->get('sizes', '[]'));
-                $imagesDir = JPATH_ROOT . "/images/" . $config->get('images_dir', 'di');
+                $config = JComponentHelper::getParams('com_etdgallery');
+                $sizes  = json_decode($config->get('sizes', '[]'));
 
                 // On va appeler le modèle.
                 JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR."/components/com_etdgallery/models");
@@ -64,8 +67,8 @@ class PlgContentEtdGallery extends JPlugin {
                     $new_image_id = $model->getState('image.id');
 
                     // On copie le fichier d'origine.
-                    $original_path = $imagesDir . "/" . $image_id . "_" . $image->filename;
-                    $new_path      = $imagesDir . "/" . $new_image_id . "_" . $image->filename;
+                    $original_path = $image->dirname . "/" . $image_id . "_" . $image->filename;
+                    $new_path      = $image->dirname . "/" . $new_image_id . "_" . $image->filename;
 
                     if (file_exists($original_path)) {
                         JFile::copy($original_path, $new_path);
@@ -74,16 +77,13 @@ class PlgContentEtdGallery extends JPlugin {
                     // On copie les fichiers des tailles.
                     foreach ($sizes as $size) {
 
-                        $original_path = $imagesDir . "/" . $image_id . "_" . $size->name . "_" . $image->filename;
-                        $new_path      = $imagesDir . "/" . $new_image_id . "_" . $size->name . "_" . $image->filename;
+                        $original_path = $image->dirname . "/" . $image_id . "_" . $size->name . "_" . $image->filename;
+                        $new_path      = $image->dirname . "/" . $new_image_id . "_" . $size->name . "_" . $image->filename;
 
                         if (file_exists($original_path)) {
                             JFile::copy($original_path, $new_path);
                         }
-
                     }
-
-
                 }
 
             } elseif ($isNew) { // Si c'est un nouvel article, on doit associer les images avec.
@@ -117,8 +117,11 @@ class PlgContentEtdGallery extends JPlugin {
         }
     }
 
-    /*
-     * delete images when content is deleted
+    /**
+     * Delete images when content is deleted.
+     *
+     * @param $context
+     * @param $article
      */
     public function onContentBeforeDelete($context, $article) {
 
@@ -131,7 +134,7 @@ class PlgContentEtdGallery extends JPlugin {
             // On charge les images associées à l'article
             $db->setQuery(
                 $db->getQuery(true)
-                ->select('a.id, a.filename')
+                ->select('a.id, a.filename, a.dirname')
                 ->from('#__etdgallery AS a')
                 ->where('a.article_id = ' . $article->id)
             );
@@ -141,12 +144,11 @@ class PlgContentEtdGallery extends JPlugin {
             // Si on a des images, on les supprime.
             if (!empty($images)) {
 
-                $sizes     = json_decode($config->get('sizes', '[]'));
-                $imagesDir = JPATH_ROOT . "/images/" . $config->get('images_dir', 'di');
+                $sizes = json_decode($config->get('sizes', '[]'));
 
                 foreach ($images as $image) {
 
-                    $path = $imagesDir . "/" . $image->id . "_" . $image->filename;
+                    $path = $image->dirname . "/" . $image->id . "_" . $image->filename;
 
                     if (file_exists($path)) {
                         JFile::delete($path);
@@ -154,20 +156,73 @@ class PlgContentEtdGallery extends JPlugin {
 
                     foreach ($sizes as $size) {
 
-                        $path = $imagesDir . "/" . $image->id . "_" .  $size->name . "_" . $image->filename;
+                        $path = $image->dirname . "/" . $image->id . "_" .  $size->name . "_" . $image->filename;
 
                         if (file_exists($path)) {
                             JFile::delete($path);
                         }
-
                     }
-
                 }
-
             }
-
         }
 
+        return;
     }
 
+    /**
+     *
+     * @param   string   $context   The context of the content being passed to the plugin.
+     * @param   object   &$article  The article object.  Note $article->text is also available
+     * @param   mixed    &$params   The article params
+     * @param   integer  $page      The 'page' number
+     *
+     * @return  mixed   true if there is an error. Void otherwise.
+     *
+     * @since   1.6
+     */
+    public function onContentPrepare($context, &$article, &$params, $page = 0) {
+
+        $app = JFactory::getApplication();
+
+        if ($context == "com_content.article" && $app->isClient('site')) {
+
+            $db = JFactory::getDbo();
+
+            // On charge les images associées à l'article.
+            $db->setQuery(
+                $db->getQuery(true)
+                    ->select('a.id, a.type, a.filename, a.dirname')
+                    ->from('#__etdgallery AS a')
+                    ->where('a.article_id = ' . $article->id)
+            );
+
+            $images = $db->loadObjectList();
+
+            // Si on a des images, on affiche la galerie.
+            if (!empty($images)) {
+
+                $config = JComponentHelper::getParams('com_etdgallery');
+                $sizes  = json_decode($config->get('sizes', '[]'));
+
+                foreach ($images as &$image) {
+
+                    if ($image->type == "image") {
+                        $image->src = new stdClass();
+
+                        foreach($sizes as $size) {
+                            $image->src->{$size->name} = $image->dirname . "/" . $image->id . "_" . $size->name . "_" . $image->filename;
+                        }
+                    }
+                }
+
+                ob_start();
+                require_once JPATH_PLUGINS . "/content/etdgallery/layouts/default.php";
+
+                // On récupère notre code html.
+                $article->text .= ob_get_clean();
+            }
+        }
+
+        return;
+    }
 }

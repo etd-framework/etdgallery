@@ -148,7 +148,7 @@ Joomla.submitbutton = function(task) {
 							</td>
 							<td>
 								<?php if ($item->type == 'image') : ?>
-									<img width="40" height="40" src="<?php echo JUri::root() ?>images/<?php echo $params->get('images_dir') ?>/<?php echo ($item->cat_alias) ? $item->cat_alias . '/' : ''; ?><?php echo $item->id ?>_<?php echo $params->get('admin_size') ?>_<?php echo $item->filename ?>" alt="">
+									<img width="40" height="40" src="<?php echo JUri::root() ?><?php echo $item->dirname; ?>/<?php echo $item->id ?>_<?php echo $params->get('admin_size') ?>_<?php echo $item->filename ?>" alt="">
 								<?php endif; ?>
 							</td>
 							<td class="has-context">

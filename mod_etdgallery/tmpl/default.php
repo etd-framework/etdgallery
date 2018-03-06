@@ -24,16 +24,15 @@ if ($params->get('enable_gallery')) {
 	$doc->addScript(JUri::root(true).'/media/com_etdgallery/vendor/Gallery-2.27.0/js/jquery.blueimp-gallery.min.js');
 
 	$js = "jQuery(function($) {
-	$(document).ready(function() {
-		var \$blueimp = $('#blueimp-gallery');
-		if (\$blueimp.length == 0) {
-			\$('body').append('<div id=\"blueimp-gallery\" class=\"blueimp-gallery blueimp-gallery-controls\"><div class=\"slides\"></div><h3 class=\"title\"></h3><a class=\"prev\">‹</a><a class=\"next\">›</a><a class=\"close\">×</a><a class=\"play-pause\"></a><ol class=\"indicator\"></ol></div>');
-		}
-	});
-});";
+        $(document).ready(function() {
+            var \$blueimp = $('#blueimp-gallery');
+            if (\$blueimp.length == 0) {
+                \$('body').append('<div id=\"blueimp-gallery\" class=\"blueimp-gallery blueimp-gallery-controls\"><div class=\"slides\"></div><h3 class=\"title\"></h3><a class=\"prev\">‹</a><a class=\"next\">›</a><a class=\"close\">×</a><a class=\"play-pause\"></a><ol class=\"indicator\"></ol></div>');
+            }
+        });
+    });";
 
 	$doc->addScriptDeclaration($js);
-
 }
 
 ?>

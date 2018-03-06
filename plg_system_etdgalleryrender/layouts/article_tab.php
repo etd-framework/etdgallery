@@ -62,144 +62,134 @@ $doc->addScriptDeclaration("jQuery(function ($) {
 
 ?>
 <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'etdgallery', JText::_('PLG_SYSTEM_ETDGALLERYRENDER_TAB_TITLE', true)); ?>
-<div id="fileupload">
-    <?php /*<div class="row-fluid">
-        <div class="span6">*/?>
-            <fieldset>
-                <legend><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_FIELDSET_UPLOAD_IMAGES_LABEL') ?></legend>
+    <div id="fileupload">
+        <fieldset>
+            <legend><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_FIELDSET_UPLOAD_IMAGES_LABEL') ?></legend>
 
-                    <div class="fileupload-buttonbar clearfix">
-                        <div class="btn-toolbar">
-                            <div class="btn-group">
-                                <span class="btn btn-success fileinput-button">
-                                    <i class="icon-plus"></i>
-                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_ADD_FILES') ?></span>
-                                    <input type="file" name="image" multiple>
-                                </span>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary start">
-                                    <i class="icon-upload"></i>
-                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_START') ?></span>
-                                </button>
-                                <button type="button" class="btn btn-warning cancel">
-                                    <i class="icon-minus-circle"></i>
-                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_CANCEL') ?></span>
-                                </button>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default select">
-                                    <input type="checkbox">
-                                    <span class="on"><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_SELECT_ALL') ?></span>
-                                    <span class="off hide"><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_SELECT_NONE') ?></span>
-                                </button>
-                                <button type="button" class="btn btn-danger delete" disabled>
-                                    <i class="icon-trash"></i>
-                                    <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_DELETE') ?></span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <span class="fileupload-process"></span>
+            <div class="fileupload-buttonbar clearfix">
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <span class="btn btn-success fileinput-button">
+                            <i class="icon-plus"></i>
+                            <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_ADD_FILES') ?></span>
+                            <input type="file" name="image" multiple>
+                        </span>
                     </div>
-
-                    <div class="fileupload-progress fade">
-                        <div class="progress progress-striped active" role="progressbar">
-                            <div class="progress-bar bar" style="width:0"></div>
-                        </div>
-                        <div class="progress-extended">&nbsp;</div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary start">
+                            <i class="icon-upload"></i>
+                            <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_START') ?></span>
+                        </button>
+                        <button type="button" class="btn btn-warning cancel">
+                            <i class="icon-minus-circle"></i>
+                            <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_CANCEL') ?></span>
+                        </button>
                     </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default select">
+                            <input type="checkbox">
+                            <span class="on"><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_SELECT_ALL') ?></span>
+                            <span class="off hide"><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_SELECT_NONE') ?></span>
+                        </button>
+                        <button type="button" class="btn btn-danger delete" disabled>
+                            <i class="icon-trash"></i>
+                            <span><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_DELETE') ?></span>
+                        </button>
+                    </div>
+                </div>
 
-            </fieldset>
-       <?php /* </div>
-        <div class="span6">
-            <fieldset>
-                <legend><?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_FIELDSET_ADD_VIDEO_LABEL') ?></legend>
+                <span class="fileupload-process"></span>
+            </div>
 
-            </fieldset>
-        </div>
-    </div>*/ ?>
-    <ul class="thumbnails files">
+            <div class="fileupload-progress fade">
+                <div class="progress progress-striped active" role="progressbar">
+                    <div class="progress-bar bar" style="width:0"></div>
+                </div>
+                <div class="progress-extended">&nbsp;</div>
+            </div>
 
-    </ul>
-</div>
+        </fieldset>
+        <ul class="thumbnails files">
 
-<script id="template-upload" type="text/x-tmpl">
-{% for (var i=0, file; file=o.files[i]; i++) { %}
-    <li class="template-upload span2 fade" data-name="{%=file.name%}">
-        <div class="thumbnail">
-            <div class="preview-container">
-                <div class="preview"></div>
-            </div>
-            <div class="form-group">
-                <input type="text" name="title" placeholder="Titre" class="input-block-level">
-            </div>
-            <div class="form-group">
-                <textarea rows="2" name="description" placeholder="Description" class="input-block-level"></textarea>
-            </div>
-            <div class="form-group">
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="featured" value="1">
-                    <?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_FEATURED') ?>
-                  </label>
+        </ul>
+    </div>
+
+    <script id="template-upload" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+        <li class="template-upload span2 fade" data-name="{%=file.name%}">
+            <div class="thumbnail">
+                <div class="preview-container">
+                    <div class="preview"></div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="title" placeholder="Titre" class="input-block-level">
+                </div>
+                <div class="form-group">
+                    <textarea rows="2" name="description" placeholder="Description" class="input-block-level"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="featured" value="1">
+                        <?php echo JText::_('PLG_SYSTEM_ETDGALLERYRENDER_UPLOAD_FEATURED') ?>
+                      </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <strong class="error label label-important"></strong>
+                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="bar progress-bar progress-bar-success" style="width:0%;"></div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-default crop" data-name="{%=file.name%}"><i class="icon-expand"></i></button>
+                    {% if (!i && !o.options.autoUpload) { %}
+                    <button type="button" class="btn btn-success start" disabled><i class="icon-upload"></i></button>
+                    {% } %}
+                    {% if (!i) { %}
+                    <button type="button" class="btn btn-danger cancel"><i class="icon-delete"></i></button>
+                    {% } %}
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <strong class="error label label-important"></strong>
-                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <div class="bar progress-bar progress-bar-success" style="width:0%;"></div>
+        </li>
+    {% } %}
+    </script>
+    <script id="template-download" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+        <li class="template-download span2 fade">
+            <div class="thumbnail">
+                <div class="preview-container">
+                    <div class="preview">
+                    {% if (file.thumbnailUrl) { %}
+                        <img src="{%=file.thumbnailUrl%}" class="img-responsive">
+                    {% } %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <strong class="error label label-important"></strong>
+                </div>
+                <div class="actions">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default select">
+                            <input type="checkbox">
+                        </button>
+                        <button type="button" class="btn btn-primary featured{% if (file.featured == "1") { %} active{% } %}" data-id="{%=file.id%}">
+                            <i class="icon-star{% if (file.featured == "0") { %} hide{% } %}"></i>
+                            <i class="icon-star-empty{% if (file.featured == "1") { %} hide{% } %}"></i>
+                            <input type="radio" name="featured" id="featured_{%=file.id%}" autocomplete="off"{% if (file.featured == "1") { %} checked{% } %}>
+                        </button>
+                    <?php /*<button type="button" class="btn btn-primary edit"><i class="icon-pencil"></i></button>
+                    <button type="button" class="btn btn-success save hide" data-id="{%=file.id%}"><i class="icon-checkmark"></i></button>*/ ?>
+                    {% if (file.deleteUrl) { %}
+                        <button type="button" class="btn btn-danger delete" data-type="POST" data-data="<?php echo JSession::getFormToken() ?>=1"  data-url="{%#file.deleteUrl%}"><i class="icon-trash"></i></button>
+                    {% } %}
+                    </div>
                 </div>
             </div>
-            <div class="actions">
-                <div class="btn-group">
-                <button type="button" class="btn btn-default crop" data-name="{%=file.name%}"><i class="icon-expand"></i></button>
-                {% if (!i && !o.options.autoUpload) { %}
-                <button type="button" class="btn btn-success start" disabled><i class="icon-upload"></i></button>
-                {% } %}
-                {% if (!i) { %}
-                <button type="button" class="btn btn-danger cancel"><i class="icon-delete"></i></button>
-                {% } %}
-                </div>
-            </div>
-        </div>
-    </li>
-{% } %}
-</script>
-<script id="template-download" type="text/x-tmpl">
-{% for (var i=0, file; file=o.files[i]; i++) { %}
-    <li class="template-download span2 fade">
-        <div class="thumbnail">
-            <div class="preview-container">
-                <div class="preview">
-                {% if (file.thumbnailUrl) { %}
-                    <img src="{%=file.thumbnailUrl%}" class="img-responsive">
-                {% } %}
-                </div>
-            </div>
-            <div class="form-group">
-                <strong class="error label label-important"></strong>
-            </div>
-            <div class="actions">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default select">
-                        <input type="checkbox">
-                    </button>
-                    <button type="button" class="btn btn-primary featured{% if (file.featured == "1") { %} active{% } %}" data-id="{%=file.id%}">
-                        <i class="icon-star{% if (file.featured == "0") { %} hide{% } %}"></i>
-                        <i class="icon-star-empty{% if (file.featured == "1") { %} hide{% } %}"></i>
-                        <input type="radio" name="featured" id="featured_{%=file.id%}" autocomplete="off"{% if (file.featured == "1") { %} checked{% } %}>
-                    </button>
-                <?php /*<button type="button" class="btn btn-primary edit"><i class="icon-pencil"></i></button>
-                <button type="button" class="btn btn-success save hide" data-id="{%=file.id%}"><i class="icon-checkmark"></i></button>*/ ?>
-                {% if (file.deleteUrl) { %}
-                    <button type="button" class="btn btn-danger delete" data-type="POST" data-data="<?php echo JSession::getFormToken() ?>=1"  data-url="{%#file.deleteUrl%}"><i class="icon-trash"></i></button>
-                {% } %}
-                </div>
-            </div>
-        </div>
-        <input type="hidden" name="etdgallery[]" value="{%=file.id%}">
-    </li>
-{% } %}
-</script>
+            <input type="hidden" name="etdgallery[]" value="{%=file.id%}">
+        </li>
+    {% } %}
+    </script>
 <?php echo JHtml::_('bootstrap.endTab'); ?>

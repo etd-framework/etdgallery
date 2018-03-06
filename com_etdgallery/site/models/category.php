@@ -46,23 +46,16 @@ class EtdGalleryModelCategory extends JModelList {
 
         if ($items) {
 
-            $config    = JComponentHelper::getParams('com_etdgallery');
-            $sizes     = json_decode($config->get('sizes', '[]'));
-            $imagesUri = JUri::root() . "images/" . $config->get('images_dir', 'di');
+            $config = JComponentHelper::getParams('com_etdgallery');
+            $sizes  = json_decode($config->get('sizes', '[]'));
 
             foreach ($items as $item) {
-
-                $item_src = $imagesUri;
-
-                if ($item->cat_alias) {
-                    $item_src .= '/' . $item->cat_alias;
-                }
 
                 if ($item->type == "image") {
                     $item->src = new stdClass();
 
                     foreach($sizes as $size) {
-                        $item->src->{$size->name} = $item_src . "/" . $item->id . "_" . $size->name . "_" . $item->filename;
+                        $item->src->{$size->name} = $item->dirname . "/" . $item->id . "_" . $size->name . "_" . $item->filename;
                     }
                 }
 

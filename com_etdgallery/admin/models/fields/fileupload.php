@@ -37,6 +37,7 @@ class JFormFieldFileUpload extends JFormField {
         $sizes      = json_decode($config->get('sizes', '[]'));
         $admin_size = $sizes->{$config->get('admin_size', 'thumb')};
         $filename   = $this->form->getValue('filename');
+        $dirname    = $this->form->getValue('dirname');
         $id         = $this->form->getValue('id');
 
         $doc->addStyleSheet(JUri::root(true) . "/media/com_etdgallery/vendor/jQuery-File-Upload-9.11.2/css/jquery.fileupload.css");
@@ -254,8 +255,8 @@ class JFormFieldFileUpload extends JFormField {
     });
 });");
 
-        if ($filename && $id) {
-            $html[] = '<div id="preview"><img width="' . $admin_size->width . '" height="' . $admin_size->height . '" src="' . JUri::root() . 'images/' . $config->get('images_dir') . '/' . $id . '_' . $config->get('admin_size') . '_' . $filename . '" alt=""></div>';
+        if ($filename && $dirname && $id) {
+            $html[] = '<div id="preview"><img width="' . $admin_size->width . '" height="' . $admin_size->height . '" src="' . JUri::root() . $dirname . '/' . $id . '_' . $config->get('admin_size') . '_' . $filename . '" alt=""></div>';
         } else {
             $html[] = '<div id="preview"><img width="' . $admin_size->width . '" height="' . $admin_size->height . '" src="" alt=""></div>';
         }

@@ -43,7 +43,7 @@ class PlgSystemEtdgalleryrender extends JPlugin {
                 $input->get('layout', '', 'cmd' == 'edit')
             ) {
 
-                // On récupère le documents.
+                // On récupère le document.
                 $doc       = JFactory::getDocument();
                 $component = $doc->getBuffer('component');
 
