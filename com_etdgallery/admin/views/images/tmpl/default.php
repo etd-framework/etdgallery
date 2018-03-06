@@ -18,7 +18,7 @@ JHtml::_('bootstrap.tooltip');
 //JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
 
-$params     = $this->state->get('params');
+$params     = JComponentHelper::getParams('com_etdgallery');
 $user		= JFactory::getUser();
 $userId		= $user->get('id');
 $listOrder	= $this->escape($this->state->get('list.ordering'));
@@ -148,7 +148,7 @@ Joomla.submitbutton = function(task) {
 							</td>
 							<td>
 								<?php if ($item->type == 'image') : ?>
-									<img width="40" height="40" src="<?php echo JUri::root() ?><?php echo $item->dirname; ?>/<?php echo $item->id ?>_<?php echo $params->get('admin_size') ?>_<?php echo $item->filename ?>" alt="">
+									<img width="40" height="40" src="<?php echo JUri::root(); ?>/<?php echo $item->dirname; ?>/<?php echo $item->id; ?>_<?php echo $params->get('admin_size'); ?>_<?php echo $item->filename; ?>" alt="">
 								<?php endif; ?>
 							</td>
 							<td class="has-context">

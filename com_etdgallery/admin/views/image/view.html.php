@@ -22,8 +22,7 @@ class EtdGalleryViewImage extends JViewLegacy {
      * Display the view
      *
      * @param   string $tpl The name of the template file to parse; automatically searches through the template paths.
-     *
-     * @return  void
+     * @return bool
      */
     public function display($tpl = null) {
 
@@ -40,9 +39,8 @@ class EtdGalleryViewImage extends JViewLegacy {
         }
 
         $this->addToolbar();
-        /*JHtml::_('jquery.framework');
-        JHtml::_('script', 'media/com_banners/banner.js');*/
-        parent::display($tpl);
+
+        return parent::display($tpl);
     }
 
     /**

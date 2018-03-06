@@ -47,7 +47,7 @@ class JFormFieldFileUpload extends JFormField {
         $doc->addScript(JUri::root(true) . "/media/com_etdgallery/vendor/jQuery-File-Upload-9.11.2/js/jquery.fileupload.js");
         $doc->addScript(JUri::root(true) . "/media/com_etdgallery/vendor/jQuery-File-Upload-9.11.2/js/jquery.fileupload-process.js");
         $doc->addScript(JUri::root(true) . "/media/com_etdgallery/vendor/jQuery-File-Upload-9.11.2/js/jquery.fileupload-image.js");
-        $doc->addScript(JUri::root(true)."/media/com_etdgallery/vendor/Jcrop-2.0.3/js/Jcrop.min.js");
+        $doc->addScript(JUri::root(true) . "/media/com_etdgallery/vendor/Jcrop-2.0.3/js/Jcrop.min.js");
 
         $options = array(
             'dataType'           => 'json',
