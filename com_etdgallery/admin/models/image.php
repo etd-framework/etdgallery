@@ -420,6 +420,14 @@ class EtdGalleryModelImage extends JModelAdmin {
 
     public function delete(&$pks) {
 
+        $directories = [];
+
+        foreach ($pks as $i => $pk) {
+
+            $item =            $this->getItem($pk);
+            $directories[$i] = $item->dirname;
+        }
+
         $ret = parent::delete($pks);
 
         // Si la suppression est OK, on supprime les fichiers aussi.
@@ -428,20 +436,15 @@ class EtdGalleryModelImage extends JModelAdmin {
             jimport('joomla.filesystem.folder');
             jimport('joomla.filesystem.file');
 
-            $config    = JComponentHelper::getParams('com_etdgallery');
-            $imagesDir = JPATH_ROOT . "/images/" . $config->get('images_dir', 'di');
-
             foreach ($pks as $i => $pk) {
 
                 // On supprime tous les fichiers commençant par l'id.
-                $files = JFolder::files($imagesDir, '^' . $pk . '_.', false, true);
+                $files = JFolder::files(JPATH_ROOT . "/" . $directories[$i], '^' . $pk . '_.', false, true);
 
                 if (!empty($files)) {
                     JFile::delete($files);
                 }
-
             }
-
         }
 
         return $ret;
