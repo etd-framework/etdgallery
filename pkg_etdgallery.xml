@@ -27,6 +27,6 @@
 
     <!-- Update servers -->
     <updateservers>
-        <server type="extension" priority="1" name="ETD Gallery Updates">https://raw.githubusercontent.com/etd-framework/etdgallery/master/updates/pkg_etdgallery.xml</server>
+        <server type="extension" priority="1" name="ETD Gallery Updates">https://raw.githubusercontent.com/etd-framework/etdgallery/dev/updates/pkg_etdgallery.xml</server>
     </updateservers>
 </extension>
