@@ -3,7 +3,7 @@
  * @package     Joomla.Plugin
  * @subpackage  System.Etdgalleryrender
  *
- * @version     1.1.1
+ * @version     1.1.3
  * @copyright   Copyright (C) 2013 - 2018 ETD Solutions. All rights reserved.
  * @license     http://www.etd-solutions.com/licence
  * @author      ETD Solutions http://www.etd-solutions.com
