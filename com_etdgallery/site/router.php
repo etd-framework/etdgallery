@@ -241,7 +241,7 @@ class EtdGalleryRouter extends JComponentRouterBase {
 
         // We get the category id from the menu item and search from there
         $id = $item->query['id'];
-        $category = JCategories::getInstance('Content')->get($id);
+        $category = JCategories::getInstance('EtdGallery')->get($id);
 
         if (!$category)
         {
@@ -279,7 +279,7 @@ class EtdGalleryRouter extends JComponentRouterBase {
                     $db = JFactory::getDbo();
                     $query = $db->getQuery(true)
                         ->select($db->quoteName('id'))
-                        ->from('#__content')
+                        ->from('#__etdgallery')
                         ->where($db->quoteName('catid') . ' = ' . (int) $vars['catid'])
                         ->where($db->quoteName('alias') . ' = ' . $db->quote($segment));
                     $db->setQuery($query);
