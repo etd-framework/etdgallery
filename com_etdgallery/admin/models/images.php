@@ -72,7 +72,7 @@ class EtdGalleryModelImages extends JModelList {
         $published = $this->getState('filter.published');
 
         if (is_numeric($published)) {
-            $query->where('a.state = ' . (int)$published);
+            $query->where('a.state = ' . (int) $published);
         } elseif ($published === '') {
             $query->where('(a.state IN (0, 1))');
         }

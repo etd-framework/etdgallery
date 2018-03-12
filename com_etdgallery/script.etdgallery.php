@@ -1,12 +1,15 @@
 <?php
 /**
- * @package   AkeebaBackup
- * @copyright Copyright (c)2006-2018 Nicholas K. Dionysopoulos / Akeeba Ltd
- * @license   GNU General Public License version 3, or later
- */
+ * @package     ETDGallery
+ *
+ * @version     1.1.5
+ * @copyright   Copyright (C) 2015 - 2018 ETD Solutions. All rights reserved.
+ * @license     http://www.etd-solutions.com/licence
+ * @author      ETD Solutions http://www.etd-solutions.com
+ **/
 
 // Protect from unauthorized access
-defined('_JEXEC') or die();
+defined('_JEXEC') or die('Restricted access to ETDGallery');
 
 class Com_EtdGalleryInstallerScript {
 

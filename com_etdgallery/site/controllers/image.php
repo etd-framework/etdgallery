@@ -30,7 +30,6 @@ class EtdGalleryControllerImage extends JControllerLegacy {
 			'hits' => $hits
 		));
 		die;
-
 	}
 
 }
