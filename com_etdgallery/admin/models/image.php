@@ -348,12 +348,12 @@ class EtdGalleryModelImage extends JModelAdmin {
 
                     $imagesDir .= '/' . $cat_alias;
                     $dirname .= '/' . $cat_alias;
-
-                    // On crée le dossier de destination.
-                    if (!is_dir($imagesDir)) {
-                        JFolder::create($imagesDir);
-                    }
                 }
+            }
+
+            // On crée le dossier de destination.
+            if (!is_dir($imagesDir)) {
+                JFolder::create($imagesDir);
             }
 
             $data['dirname'] = $dirname;

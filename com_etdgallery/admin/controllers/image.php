@@ -276,25 +276,6 @@ class EtdGalleryControllerImage extends JControllerForm {
             $sizes     = json_decode($config->get('sizes', '[]'));
             $image_id  = $model->getState('image.id');
             $crop      = !empty($validData['crop']) ? json_decode($validData['crop']) : null;
-            $catid     = $model->getItem()->catid;
-
-            // Si l'image appartient à une catégorie.
-            if ($catid > 0) {
-
-                // On récupère l'alias de la catégorie.
-                $cat_alias = $model->getCategory($catid)->alias;
-
-                if ($cat_alias) {
-
-                    // On update les dossiers de destination
-                    $imagesDir .= '/' . $cat_alias;
-                }
-            }
-
-            // On crée le dossier de destination s'il n'existe pas.
-            if (!is_dir($imagesDir)) {
-                JFolder::create($imagesDir);
-            }
 
             $image = $files['image'];
 
