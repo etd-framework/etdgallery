@@ -30,5 +30,4 @@ class EtdGalleryModelImage extends JModelItem {
 
         return $table->hits;
     }
-
 }
